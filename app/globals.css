@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #030303;
-  --foreground: #f5f0e7;
-  --muted: #aaa197;
-  --dim: #6f6861;
-  --line: rgba(245, 240, 231, 0.13);
-  --gold: #c9a35c;
-  --gold-faint: rgba(201, 163, 92, 0.18);
+  --background: #f6f1e8;
+  --foreground: #171411;
+  --muted: #625a51;
+  --dim: #8a8177;
+  --line: rgba(23, 20, 17, 0.14);
+  --gold: #a9782c;
+  --paper: rgba(255, 252, 246, 0.78);
 }
 
 @theme inline {
@@ -29,21 +29,10 @@ body {
   min-height: 100vh;
   margin: 0;
   background:
-    linear-gradient(180deg, rgba(201, 163, 92, 0.05), transparent 420px),
-    radial-gradient(circle at 78% 6%, rgba(245, 240, 231, 0.06), transparent 28rem),
-    #030303;
+    linear-gradient(180deg, rgba(255, 252, 246, 0.96), rgba(246, 241, 232, 0.98)),
+    #f6f1e8;
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-}
-
-body::before {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image: linear-gradient(rgba(245, 240, 231, 0.025) 1px, transparent 1px);
-  background-size: 100% 96px;
-  content: "";
 }
 
 a {
@@ -101,7 +90,7 @@ main {
 }
 
 .nav-link {
-  color: var(--dim);
+  color: var(--muted);
   font-size: 13px;
   transition: color 160ms ease;
 }
@@ -121,20 +110,47 @@ main {
 }
 
 .hero {
-  min-height: 78vh;
-  padding: 76px 0 64px;
+  padding: 42px 0 74px;
 }
 
-.home-hero {
+.photo-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.72fr);
-  align-items: end;
-  gap: 68px;
+  gap: 30px;
+}
+
+.hero-image-wrap {
+  position: relative;
+  min-height: clamp(430px, 68vw, 760px);
+  overflow: hidden;
+  background: #ded4c6;
+}
+
+.hero-image {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hero-image-wrap::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.34), transparent 34%),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.42), transparent 44%);
+  content: "";
+}
+
+.hero-overlay {
+  position: absolute;
+  z-index: 1;
+  left: clamp(20px, 4vw, 54px);
+  right: clamp(20px, 4vw, 54px);
+  bottom: clamp(22px, 4vw, 54px);
+  color: #fffaf2;
 }
 
 .eyebrow,
 .footer-kicker {
-  margin: 0 0 18px;
+  margin: 0 0 16px;
   color: var(--gold);
   font-family: Consolas, "Courier New", monospace;
   font-size: 12px;
@@ -142,19 +158,30 @@ main {
   text-transform: uppercase;
 }
 
-.hero-copy h1,
+.hero-overlay .eyebrow {
+  color: #e8c889;
+}
+
+.hero-overlay h1,
 .section-header h1 {
   max-width: 900px;
   margin: 0;
-  font-size: clamp(54px, 11vw, 136px);
+  font-size: clamp(46px, 10vw, 124px);
   font-weight: 760;
   line-height: 0.9;
 }
 
-.hero-copy p:not(.eyebrow),
+.hero-understory {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) auto;
+  gap: 32px;
+  align-items: end;
+}
+
+.hero-understory p,
 .section-header p:not(.eyebrow) {
   max-width: 720px;
-  margin: 28px 0 0;
+  margin: 0;
   color: var(--muted);
   font-size: clamp(18px, 2vw, 23px);
   line-height: 1.55;
@@ -163,8 +190,7 @@ main {
 .button-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 26px;
-  margin-top: 38px;
+  gap: 24px;
 }
 
 .text-link {
@@ -175,60 +201,14 @@ main {
   color: var(--foreground);
   font-size: 14px;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .text-link::after {
-  width: 46px;
+  width: 42px;
   height: 1px;
   background: var(--gold);
   content: "";
-}
-
-.quiet-visual {
-  position: relative;
-  min-height: 520px;
-  overflow: hidden;
-}
-
-.quiet-visual::before {
-  position: absolute;
-  right: 4%;
-  bottom: 12%;
-  width: 86%;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--foreground), var(--gold), transparent);
-  content: "";
-}
-
-.quiet-visual::after {
-  position: absolute;
-  right: 12%;
-  bottom: 22%;
-  width: 44%;
-  height: 62%;
-  border-right: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  background: linear-gradient(180deg, rgba(201, 163, 92, 0.08), transparent);
-  content: "";
-}
-
-.visual-number {
-  position: absolute;
-  top: 8%;
-  right: 4%;
-  color: rgba(245, 240, 231, 0.08);
-  font-size: clamp(96px, 18vw, 220px);
-  font-weight: 800;
-  line-height: 0.8;
-}
-
-.visual-caption {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  color: var(--dim);
-  font-family: Consolas, "Courier New", monospace;
-  font-size: 12px;
 }
 
 .statement-band {
@@ -292,6 +272,10 @@ main {
 
 .section-header h1 {
   font-size: clamp(44px, 7vw, 96px);
+}
+
+.section-header p:not(.eyebrow) {
+  margin-top: 26px;
 }
 
 .editorial-list,
@@ -380,11 +364,11 @@ main {
 }
 
 .signal-strip {
-  height: 190px;
+  height: 160px;
   margin-top: 88px;
   background:
-    linear-gradient(90deg, transparent 0 12%, var(--gold-faint) 12% 13%, transparent 13% 31%, rgba(245, 240, 231, 0.16) 31% 32%, transparent 32% 58%, var(--gold-faint) 58% 59%, transparent 59%),
-    linear-gradient(180deg, transparent, rgba(245, 240, 231, 0.04));
+    linear-gradient(90deg, transparent 0 12%, rgba(169, 120, 44, 0.2) 12% 13%, transparent 13% 31%, rgba(23, 20, 17, 0.16) 31% 32%, transparent 32% 58%, rgba(169, 120, 44, 0.2) 58% 59%, transparent 59%),
+    linear-gradient(180deg, transparent, rgba(23, 20, 17, 0.04));
 }
 
 .media-row {
@@ -442,7 +426,7 @@ main {
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 14px;
-  color: var(--dim);
+  color: var(--muted);
   font-size: 13px;
 }
 
@@ -462,7 +446,7 @@ main {
 
   .site-header,
   .site-footer,
-  .home-hero,
+  .hero-understory,
   .split-note {
     grid-template-columns: 1fr;
   }
@@ -477,12 +461,15 @@ main {
   }
 
   .hero {
-    min-height: auto;
-    padding-top: 54px;
+    padding-top: 34px;
   }
 
-  .quiet-visual {
-    min-height: 300px;
+  .hero-image-wrap {
+    min-height: 500px;
+  }
+
+  .button-row {
+    gap: 18px;
   }
 
   .repertoire-list {
@@ -499,9 +486,13 @@ main {
     gap: 12px;
   }
 
-  .hero-copy h1,
+  .hero-overlay h1,
   .section-header h1 {
-    font-size: 46px;
+    font-size: 43px;
+  }
+
+  .hero-image-wrap {
+    min-height: 430px;
   }
 
   .notebook-line,
@@ -519,7 +510,7 @@ main {
     font-size: 34px;
   }
 
-  .quiet-visual {
-    min-height: 240px;
+  .text-link {
+    white-space: normal;
   }
 }

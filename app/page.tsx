@@ -1,32 +1,40 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notes } from "./data";
 
 export default function Home() {
   return (
     <>
-      <section className="hero home-hero">
-        <div className="hero-copy">
-          <p className="eyebrow">Matt.YC / personal archive</p>
-          <h1>Classical foundation. Creator future.</h1>
+      <section className="hero photo-hero">
+        <div className="hero-image-wrap">
+          <Image
+            src="/images/matt/coverpage.png"
+            alt="Matt.YC seated alone at a grand piano in a Steinway showroom"
+            fill
+            priority
+            sizes="(max-width: 900px) 100vw, 1180px"
+            className="hero-image"
+          />
+          <div className="hero-overlay">
+            <p className="eyebrow">Matt.YC / personal archive</p>
+            <h1>Classical foundation. Creator future.</h1>
+          </div>
+        </div>
+        <div className="hero-understory">
           <p>
-            I am Matt.YC, a young creator shaped by classical piano, practice, and curiosity.
-            This site is where I collect the journey: performances, ideas, experiments,
-            sponsors, and the work still in progress.
+            I am Matt.YC. Piano is where I learned discipline. This is where I collect the
+            journey: performances, ideas, experiments, and the work still in progress.
           </p>
           <div className="button-row">
             <Link className="text-link" href="/journey">Read the journey</Link>
             <Link className="text-link" href="/creation">See what I am making</Link>
           </div>
         </div>
-        <div className="quiet-visual" aria-label="Abstract piano and studio light placeholder">
-          <span className="visual-number">01</span>
-          <span className="visual-caption">images later / public/images/matt</span>
-        </div>
       </section>
 
       <section className="statement-band">
         <p>
-          Piano is where I learned discipline. Creation is where I want to keep exploring.
+          I do not want this to be only about winning. I want to keep getting better for life.
         </p>
       </section>
 
