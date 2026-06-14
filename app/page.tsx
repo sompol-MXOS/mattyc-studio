@@ -12,22 +12,22 @@ export default function Home() {
             alt="Matt.YC seated alone at a grand piano in a Steinway showroom"
             fill
             priority
-            sizes="(max-width: 900px) 100vw, 1180px"
+            sizes="100vw"
             className="hero-image"
           />
           <div className="hero-overlay">
-            <p className="eyebrow">Matt.YC / personal archive</p>
-            <h1>Classical foundation. Creator future.</h1>
-          </div>
-        </div>
-        <div className="hero-understory">
-          <p>
-            I am Matt.YC. Piano is where I learned discipline. This is where I collect the
-            journey: performances, ideas, experiments, and the work still in progress.
-          </p>
-          <div className="button-row">
-            <Link className="text-link" href="/journey">Read the journey</Link>
-            <Link className="text-link" href="/creation">See what I am making</Link>
+            <div className="hero-overlay-copy">
+              <p className="eyebrow">Matt.YC / personal archive</p>
+              <h1>Classical foundation. Creator future.</h1>
+              <p className="hero-subtext">
+                I am Matt.YC. Piano is where I learned discipline. This is where I collect the
+                journey: performances, ideas, experiments, and the work still in progress.
+              </p>
+              <div className="button-row hero-actions">
+                <Link className="text-link light" href="/journey">Read the journey</Link>
+                <Link className="text-link light" href="/creation">See what I am making</Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
