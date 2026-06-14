@@ -6,13 +6,13 @@ export default function MediaPage() {
     <section className="page-shell">
       <SectionHeader
         eyebrow="Media"
-        title="A refined archive for photos, videos, performances, and press."
-        copy="This v1 uses visual placeholders until real assets are placed in public/images/matt/ and public/videos/."
+        title="Photos, videos, and fragments from the work."
+        copy="For now this is a quiet archive map. Real images can live in public/images/matt/ and videos can live in public/videos/ when they are ready."
       />
-      <div className="media-grid">
+      <div className="media-stream">
         {mediaPlaceholders.map((item, index) => (
-          <article className="media-tile" key={item}>
-            <div className="media-placeholder">{String(index + 1).padStart(2, "0")}</div>
+          <article className="media-row" key={item}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
             <h2>{item}</h2>
           </article>
         ))}

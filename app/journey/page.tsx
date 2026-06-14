@@ -1,33 +1,29 @@
 import { SectionHeader } from "../components/SectionHeader";
-import { milestones } from "../data";
+import { journeyLines } from "../data";
 
 export default function JourneyPage() {
   return (
     <section className="page-shell">
       <SectionHeader
         eyebrow="Journey"
-        title="A growth archive built around discipline, range, and momentum."
-        copy="MattYC.studio tracks practice, competition preparation, milestones, and the wider creator path without reducing the story to one lane."
+        title="This is not a perfect story. It is a record of getting better."
+        copy="I want this page to hold the practice, the competitions, the pressure, the mistakes, and the moments that make the next step possible."
       />
-      <div className="timeline">
-        {milestones.map((item, index) => (
-          <article className="timeline-item" key={item.title}>
+      <div className="editorial-list">
+        {journeyLines.map((item, index) => (
+          <article className="editorial-row" key={item.title}>
             <span>{String(index + 1).padStart(2, "0")}</span>
             <div>
-              <p className="card-eyebrow">{item.eyebrow}</p>
               <h2>{item.title}</h2>
               <p>{item.copy}</p>
             </div>
           </article>
         ))}
       </div>
-      <div className="wide-panel">
-        <h2>Archive direction</h2>
-        <p>
-          Future entries can capture competitions, repertoire milestones, recording sessions,
-          concerts, collaborations, essays, business experiments, and creative technology projects.
-        </p>
-      </div>
+      <p className="large-note">
+        I am building this slowly. Not as a final resume, but as an archive of becoming more serious,
+        more curious, and more honest with the work.
+      </p>
     </section>
   );
 }

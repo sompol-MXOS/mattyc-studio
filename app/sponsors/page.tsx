@@ -3,18 +3,18 @@ import { sponsorNames } from "../data";
 
 export default function SponsorsPage() {
   return (
-    <section className="page-shell">
+    <section className="page-shell sponsors-page">
       <SectionHeader
         eyebrow="Sponsors"
-        title="Sponsors and creative ecosystem."
-        copy="Logo-ready sponsor cards for the v1 site. Real marks can be added later with approval and proper asset files."
+        title="Tools and people supporting the journey."
+        copy="This page is not a corporate deck. It is a place to recognize the sound, gear, and creative ecosystem helping the work become real."
       />
-      <div className="sponsor-grid">
-        {sponsorNames.map((name) => (
-          <article className="sponsor-card" key={name}>
-            <span>Partner</span>
-            <h2>{name}</h2>
-          </article>
+      <div className="sponsor-list">
+        {sponsorNames.map((name, index) => (
+          <div className="sponsor-line" key={name}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <p>{name}</p>
+          </div>
         ))}
       </div>
     </section>

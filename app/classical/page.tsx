@@ -6,23 +6,19 @@ export default function ClassicalPage() {
     <section className="page-shell">
       <SectionHeader
         eyebrow="Classical"
-        title="The discipline underneath everything else."
-        copy="Classical piano is the foundation: technical refinement, serious repertoire, competition standards, and the practice ethic that carries into every creative direction."
+        title="Classical music is my foundation."
+        copy="Piano taught me how to stay with difficult things. Technique, sound, rhythm, memory, patience: I keep returning to these because they make everything else stronger."
       />
-      <div className="repertoire-grid">
-        {repertoire.map((piece) => (
-          <article className="repertoire-card" key={piece}>
-            <span>Repertoire</span>
-            <h2>{piece}</h2>
-          </article>
+      <p className="large-note">
+        I want to keep piano at the highest level I can for life, even while I build into other worlds.
+      </p>
+      <div className="repertoire-list" aria-label="Repertoire notes">
+        {repertoire.map((piece, index) => (
+          <div className="repertoire-line" key={piece}>
+            <span>{String(index + 1).padStart(2, "0")}</span>
+            <p>{piece}</p>
+          </div>
         ))}
-      </div>
-      <div className="wide-panel classical-note">
-        <h2>Foundation, not limitation</h2>
-        <p>
-          The classical track is presented as a lifelong standard and discipline, not a constraint on
-          Matt's broader creator future.
-        </p>
       </div>
     </section>
   );

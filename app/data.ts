@@ -8,6 +8,15 @@ export const navItems = [
   { href: "/contact", label: "Contact" },
 ];
 
+export const notes = [
+  "I am building this slowly.",
+  "Piano is where I learned discipline.",
+  "Classical music is my foundation.",
+  "Creation is where I want to keep exploring.",
+  "I do not want this to be only about winning.",
+  "I want to keep getting better for life.",
+];
+
 export const repertoire = [
   "Chopin Etude Op.25 No.11, Winter Wind",
   "Liszt Mazeppa",
@@ -21,31 +30,28 @@ export const repertoire = [
   "Scarlatti K.141",
 ];
 
-export const milestones = [
+export const journeyLines = [
   {
-    eyebrow: "Foundation",
-    title: "Classical discipline as the operating system",
-    copy: "Daily practice, technical standards, repertoire building, and competition preparation shape the base of Matt.YC's work.",
+    title: "Practice before identity",
+    copy: "Before anything looks finished, there are hours alone with sound, repetition, and small corrections.",
   },
   {
-    eyebrow: "Expansion",
-    title: "Performance becomes authorship",
-    copy: "Piano remains the anchor while composition, songwriting, singing, band work, and production open the next creative field.",
+    title: "Competitions without making life only about winning",
+    copy: "Competitions matter because they test focus. They are not the whole story.",
   },
   {
-    eyebrow: "Builder Path",
-    title: "A long-term creator, not a narrow track",
-    copy: "The studio is built around durable growth across music, economics, business, media, and new creative technologies.",
+    title: "A wider builder path",
+    copy: "I want piano to stay serious while I keep growing into creation, business, economics, and new tools.",
   },
 ];
 
 export const creationAreas = [
   "Composition and songwriting",
-  "Band performance and vocal development",
-  "Production, arrangement, and recording workflow",
-  "AI-assisted music exploration",
+  "Band, singing, and performance ideas",
+  "Production, arrangement, and recording experiments",
+  "AI-assisted music creation",
   "Game, media, and soundtrack direction",
-  "Business-minded creative development",
+  "Business-minded creative work",
 ];
 
 export const sponsorNames = [
@@ -57,10 +63,10 @@ export const sponsorNames = [
 ];
 
 export const mediaPlaceholders = [
-  "Performance photography",
-  "Competition and recital video",
-  "Studio process clips",
-  "Press and interview archive",
-  "Behind-the-scenes creation logs",
-  "Future live session releases",
+  "Performances",
+  "Practice room",
+  "Competitions",
+  "Studio ideas",
+  "Press and media",
+  "Work in progress",
 ];

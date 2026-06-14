@@ -5,15 +5,15 @@ export default function ContactPage() {
     <section className="page-shell contact-page">
       <SectionHeader
         eyebrow="Contact"
-        title="Collaboration, booking, and creative inquiries."
-        copy="A static v1 placeholder for future contact handling. No form backend, email service, Supabase, or database connection is enabled."
+        title="For performance, collaboration, media, or creative project conversations."
+        copy="This is a simple v1 contact point. No backend, database, Supabase, or form storage is connected."
       />
-      <div className="contact-panel">
-        <div>
-          <h2>Inquiry areas</h2>
-          <p>Performances, collaborations, recording, media, sponsorship, and creative projects.</p>
-        </div>
-        <a className="button primary" href="mailto:hello@mattyc.studio">hello@mattyc.studio</a>
+      <div className="quiet-contact">
+        <p>
+          If the conversation is about music, performance, recording, sponsors, or a creative idea,
+          this is the place to start.
+        </p>
+        <a className="text-link" href="mailto:hello@mattyc.studio">hello@mattyc.studio</a>
       </div>
     </section>
   );

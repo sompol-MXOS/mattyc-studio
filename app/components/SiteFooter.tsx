@@ -5,10 +5,9 @@ export function SiteFooter() {
   return (
     <footer className="site-footer">
       <div>
-        <p className="footer-kicker">Classical foundation. Creator future.</p>
+        <p className="footer-kicker">MattYC.studio</p>
         <p className="footer-copy">
-          Matt.YC is a young creator shaped by disciplined piano study and expanding into composition,
-          performance, production, and new creative technologies.
+          A place to collect the work, the practice, the mistakes, and the next ideas.
         </p>
       </div>
       <div className="footer-links">
