@@ -261,6 +261,28 @@ main {
   object-position: 50% 34%;
 }
 
+.creation-hero .page-hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-position: 52% 52%;
+}
+
+.creation-hero .page-hero-overlay {
+  top: clamp(110px, 20vh, 190px);
+  right: clamp(72px, 14vw, 210px);
+  bottom: auto;
+  left: auto;
+  max-width: min(620px, 42vw);
+  text-align: right;
+}
+
+.creation-hero .page-hero-overlay h1,
+.creation-hero .page-hero-overlay p:not(.eyebrow) {
+  margin-left: auto;
+}
+
 .sponsors-hero {
   min-height: clamp(560px, 74vh, 820px);
 }
@@ -630,6 +652,12 @@ main {
     max-width: 76vw;
   }
 
+  .creation-hero .page-hero-overlay {
+    top: clamp(90px, 16vh, 150px);
+    right: clamp(42px, 8vw, 72px);
+    max-width: min(620px, 72vw);
+  }
+
   .hero-overlay-copy {
     max-width: 76vw;
   }
@@ -691,6 +719,20 @@ main {
   .page-hero-overlay {
     max-width: 92vw;
     bottom: 32px;
+  }
+
+  .creation-hero .page-hero-overlay {
+    top: auto;
+    right: max(24px, calc((100vw - 1180px) / 2));
+    bottom: 32px;
+    left: max(24px, calc((100vw - 1180px) / 2));
+    max-width: 92vw;
+    text-align: left;
+  }
+
+  .creation-hero .page-hero-overlay h1,
+  .creation-hero .page-hero-overlay p:not(.eyebrow) {
+    margin-left: 0;
   }
 
   .page-hero-overlay p:not(.eyebrow) {
