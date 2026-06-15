@@ -7,7 +7,7 @@ export default function MediaPage() {
       <SectionHeader
         eyebrow="Media"
         title="Photos, videos, and fragments from the work."
-        copy="For now this is a quiet archive map. Real images can live in public/images/matt/ and videos can live in public/videos/ when they are ready."
+        copy="This is where I collect photos, videos, performances, practice moments, competitions, and ideas from the work I am building."
       />
       <div className="media-stream">
         {mediaPlaceholders.map((item, index) => (
