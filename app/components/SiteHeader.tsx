@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { navItems } from "../data";
@@ -10,8 +11,14 @@ export function SiteHeader() {
   return (
     <header className="site-header">
       <Link className="brand" href="/" aria-label="MattYC.studio home">
-        <span className="brand-mark">MYC</span>
-        <span className="brand-text">MattYC.studio</span>
+        <Image
+          className="brand-logo"
+          src="/images/mattYC_logo_full_V1.png"
+          alt="MattYC Studio"
+          width={224}
+          height={70}
+          priority
+        />
       </Link>
       <nav className="site-nav" aria-label="Primary navigation">
         {navItems.map((item) => {
