@@ -54,12 +54,14 @@ export const creationAreas = [
   "Business-minded creative work",
 ];
 
-export const sponsorNames = [
-  "Allen & Heath",
-  "Adamson",
-  "Void",
-  "Earthworks Audio",
-  "Creation Electronics",
+export const sponsors = [
+  { name: "SONOS LIBRA", logo: "/images/sponsors/sonos-libra.svg", href: "https://sonoslibra.com/" },
+  { name: "Allen & Heath", logo: "/images/sponsors/allen-heath.svg", href: "https://www.allen-heath.com/" },
+  { name: "Adamson", logo: "/images/sponsors/adamson.svg", href: "https://adamson.ai/" },
+  { name: "Earthworks Audio", logo: "/images/sponsors/earthworks-audio.svg", href: "https://earthworksaudio.com/" },
+  { name: "XONE", logo: "/images/sponsors/xone.svg", href: "https://www.allen-heath.com/hardware-type/dj-mixers/" },
+  { name: "Ideal8 Studio", logo: "/images/sponsors/ideal8-studio.png", href: "#" },
+  { name: "Daily Mate Co.", logo: "/images/sponsors/daily-mate-co.svg", href: "https://dailymateco.com" },
 ];
 
 export const mediaPlaceholders = [
