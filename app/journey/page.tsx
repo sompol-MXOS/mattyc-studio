@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { journeyLines } from "../data";
 
 export default function JourneyPage() {
@@ -39,6 +40,29 @@ export default function JourneyPage() {
           I am building this slowly. Not as a final resume, but as an archive of becoming more
           serious, more curious, and more honest with the work.
         </p>
+        <Link
+          className="road-to-cliburn"
+          href="/journey/road-to-2027-van-cliburn"
+          aria-labelledby="road-to-cliburn-title"
+        >
+          <Image
+            src="/images/matt_px0909.jpg"
+            alt="MATT PX-0909 Journey to the Arctic poster"
+            fill
+            sizes="100vw"
+            className="road-to-cliburn-image"
+          />
+          <div className="road-to-cliburn-copy">
+            <p className="eyebrow">Road to Van Cliburn</p>
+            <h2 id="road-to-cliburn-title">ROAD TO VAN CLIBURN</h2>
+            <p className="road-to-cliburn-statement">
+              I know this is an impossible mission,
+              <br />
+              but I will because I believe.
+            </p>
+            <p>A long preparation toward the 2027 Van Cliburn Junior Competition.</p>
+          </div>
+        </Link>
       </section>
     </>
   );

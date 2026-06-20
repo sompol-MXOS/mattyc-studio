@@ -84,6 +84,10 @@ main {
   margin-left: auto;
 }
 
+.nav-item {
+  position: relative;
+}
+
 .nav-link {
   color: rgba(255, 255, 255, 0.78);
   font-size: 21.75px;
@@ -104,6 +108,44 @@ main {
   margin-top: 6px;
   background: var(--gold);
   content: "";
+}
+
+.nav-submenu {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 16px);
+  right: 0;
+  display: grid;
+  min-width: 260px;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.94);
+  opacity: 0;
+  padding: 16px;
+  pointer-events: none;
+  transform: translateY(-6px);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.nav-item:hover .nav-submenu,
+.nav-item:focus-within .nav-submenu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.nav-submenu-link {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.nav-submenu-link:hover,
+.nav-submenu-link.active {
+  color: #fff;
 }
 
 .hero {
@@ -440,6 +482,235 @@ main {
   font-size: clamp(32px, 5.5vw, 72px);
 }
 
+.road-to-cliburn {
+  position: relative;
+  display: block;
+  min-height: clamp(720px, 94vh, 1080px);
+  margin: 96px calc(50% - 50vw) 0;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 44%, rgba(32, 45, 70, 0.42), transparent 46%),
+    linear-gradient(120deg, #02040a 0%, #07101d 48%, #030303 100%);
+  color: #fffaf2;
+}
+
+.road-to-cliburn::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(1, 4, 10, 0.82), rgba(1, 4, 10, 0.2) 36%, rgba(1, 4, 10, 0.28) 66%, rgba(1, 4, 10, 0.74)),
+    linear-gradient(0deg, rgba(0, 0, 0, 0.78), transparent 38%, rgba(0, 0, 0, 0.34));
+  content: "";
+}
+
+.road-to-cliburn-image {
+  padding: clamp(24px, 4vw, 58px) clamp(16px, 8vw, 150px);
+  object-fit: contain;
+  object-position: center center;
+}
+
+.road-to-cliburn-copy {
+  position: absolute;
+  z-index: 1;
+  left: max(24px, calc((100vw - 1180px) / 2));
+  bottom: clamp(46px, 8vh, 98px);
+  display: grid;
+  max-width: min(760px, 84vw);
+  gap: 20px;
+}
+
+.road-to-cliburn-copy .eyebrow {
+  margin: 0 0 2px;
+  color: #edcd91;
+}
+
+.road-to-cliburn-copy h2 {
+  margin: 0;
+  color: rgba(255, 250, 242, 0.82);
+  font-size: clamp(28px, 4.2vw, 62px);
+  font-weight: 760;
+  line-height: 0.96;
+}
+
+.road-to-cliburn-copy p:not(.eyebrow) {
+  max-width: 620px;
+  margin: 0;
+  color: rgba(255, 250, 242, 0.88);
+  font-size: clamp(17px, 1.45vw, 21px);
+  line-height: 1.58;
+}
+
+.road-to-cliburn-statement {
+  color: #fffaf2;
+  font-size: clamp(38px, 6.4vw, 92px);
+  font-weight: 760;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.cliburn-mission-hero {
+  position: relative;
+  display: grid;
+  min-height: clamp(760px, 96vh, 1120px);
+  align-content: center;
+  justify-items: center;
+  gap: clamp(14px, 2.4vh, 26px);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(30, 45, 74, 0.32), transparent 50%),
+    linear-gradient(120deg, #02040a 0%, #06101d 48%, #010101 100%);
+  color: #fffaf2;
+  padding: clamp(34px, 5vh, 58px) 24px clamp(32px, 5vh, 56px);
+  text-align: center;
+}
+
+.cliburn-mission-poster {
+  display: block;
+  width: auto;
+  max-width: 95vw;
+  height: auto;
+  max-height: min(88vh, 1050px);
+  object-fit: contain;
+  object-position: center;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.46);
+}
+
+.cliburn-mission-hero .eyebrow {
+  margin: 0;
+  color: #edcd91;
+}
+
+.cliburn-mission-hero h1 {
+  max-width: 980px;
+  margin: 0;
+  color: #fffaf2;
+  font-size: clamp(40px, 6vw, 86px);
+  font-weight: 760;
+  line-height: 0.88;
+}
+
+.cliburn-mission-statement {
+  max-width: 720px;
+  margin: 0;
+  color: #fffaf2;
+  font-size: clamp(26px, 3.4vw, 46px);
+  font-weight: 760;
+  line-height: 1.02;
+  text-wrap: balance;
+}
+
+.cliburn-story {
+  padding-top: clamp(82px, 10vw, 132px);
+}
+
+.cliburn-story-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+  gap: clamp(36px, 7vw, 92px);
+  align-items: start;
+}
+
+.cliburn-story-intro h2 {
+  max-width: 620px;
+  margin: 0;
+  font-size: clamp(44px, 7vw, 96px);
+  font-weight: 760;
+  line-height: 0.9;
+}
+
+.cliburn-story-copy {
+  display: grid;
+  gap: 24px;
+}
+
+.cliburn-story-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(20px, 2.4vw, 31px);
+  line-height: 1.28;
+}
+
+.cliburn-story-chapters {
+  display: grid;
+  gap: 0;
+  margin-top: clamp(52px, 7vw, 82px);
+  border-top: 1px solid var(--line);
+}
+
+.cliburn-story-chapter {
+  display: grid;
+  grid-template-columns: 84px minmax(0, 1fr);
+  gap: clamp(20px, 5vw, 70px);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(28px, 4.6vw, 54px) 0;
+}
+
+.cliburn-story-chapter span {
+  color: var(--gold);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+}
+
+.cliburn-story-chapter h3 {
+  margin: 0;
+  font-size: clamp(30px, 4.4vw, 58px);
+  line-height: 1;
+}
+
+.cliburn-story-chapter p {
+  max-width: 720px;
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.58;
+}
+
+.cliburn-story-entry {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: start;
+}
+
+.cliburn-story-entry-text {
+  min-width: 0;
+}
+
+.cliburn-story-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 18px;
+  margin-bottom: 18px;
+  color: var(--gold);
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.cliburn-story-meta p,
+.cliburn-story-meta time {
+  margin: 0;
+}
+
+.cliburn-story-image {
+  display: block;
+  width: 100%;
+  max-height: 260px;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid rgba(23, 20, 17, 0.12);
+}
+
+.cliburn-story-empty {
+  margin: clamp(52px, 7vw, 82px) 0 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(34px, 5vw, 58px) 0;
+  color: var(--muted);
+  font-size: clamp(24px, 3.4vw, 42px);
+  line-height: 1.18;
+}
+
 .repertoire-list {
   columns: 2;
   column-gap: 64px;
@@ -642,6 +913,26 @@ main {
     justify-content: flex-start;
   }
 
+  .nav-item {
+    display: grid;
+    gap: 8px;
+  }
+
+  .nav-submenu {
+    position: static;
+    min-width: 0;
+    border: 0;
+    background: transparent;
+    opacity: 1;
+    padding: 0 0 0 12px;
+    pointer-events: auto;
+    transform: none;
+  }
+
+  .nav-submenu-link {
+    font-size: 14px;
+  }
+
   .sponsor-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 22px;
@@ -680,6 +971,26 @@ main {
 
   .repertoire-list {
     columns: 1;
+  }
+
+  .road-to-cliburn {
+    min-height: 90vh;
+  }
+
+  .cliburn-mission-hero {
+    min-height: 92vh;
+  }
+
+  .cliburn-story-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .cliburn-story-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .cliburn-story-image {
+    max-width: 420px;
   }
 }
 
@@ -786,6 +1097,67 @@ main {
 
   .text-link {
     white-space: normal;
+  }
+
+  .road-to-cliburn {
+    min-height: 760px;
+    margin-top: 72px;
+  }
+
+  .road-to-cliburn::after {
+    background:
+      linear-gradient(90deg, rgba(1, 4, 10, 0.42), rgba(1, 4, 10, 0.12)),
+      linear-gradient(0deg, rgba(0, 0, 0, 0.86), transparent 58%, rgba(0, 0, 0, 0.28));
+  }
+
+  .road-to-cliburn-image {
+    padding: 18px 10px 170px;
+  }
+
+  .road-to-cliburn-copy {
+    right: 24px;
+    bottom: 34px;
+    max-width: 92vw;
+  }
+
+  .road-to-cliburn-copy h2 {
+    font-size: 30px;
+  }
+
+  .road-to-cliburn-statement {
+    font-size: 39px;
+  }
+
+  .cliburn-mission-hero {
+    min-height: 820px;
+    gap: 16px;
+    padding: 34px 16px 38px;
+  }
+
+  .cliburn-mission-poster {
+    max-width: 95vw;
+    max-height: 78vh;
+  }
+
+  .cliburn-mission-statement {
+    font-size: 30px;
+  }
+
+  .cliburn-mission-hero h1 {
+    font-size: 42px;
+  }
+
+  .cliburn-story {
+    padding-top: 70px;
+  }
+
+  .cliburn-story-chapter {
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .cliburn-story-image {
+    max-width: 100%;
   }
 }
 

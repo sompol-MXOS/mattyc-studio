@@ -1,6 +1,10 @@
 export const navItems = [
   { href: "/", label: "Home" },
-  { href: "/journey", label: "Journey" },
+  {
+    href: "/journey",
+    label: "Journey",
+    children: [{ href: "/journey/road-to-2027-van-cliburn", label: "Road to 2027 Van Cliburn" }],
+  },
   { href: "/classical", label: "Classical" },
   { href: "/creation", label: "Creation" },
   { href: "/media", label: "Media" },

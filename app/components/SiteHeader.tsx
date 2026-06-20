@@ -22,11 +22,26 @@ export function SiteHeader() {
       </Link>
       <nav className="site-nav" aria-label="Primary navigation">
         {navItems.map((item) => {
-          const active = pathname === item.href;
+          const active = pathname === item.href || item.children?.some((child) => pathname === child.href);
           return (
-            <Link key={item.href} className={active ? "nav-link active" : "nav-link"} href={item.href}>
-              {item.label}
-            </Link>
+            <div className="nav-item" key={item.href}>
+              <Link className={active ? "nav-link active" : "nav-link"} href={item.href}>
+                {item.label}
+              </Link>
+              {item.children ? (
+                <div className="nav-submenu" aria-label={`${item.label} submenu`}>
+                  {item.children.map((child) => (
+                    <Link
+                      className={pathname === child.href ? "nav-submenu-link active" : "nav-submenu-link"}
+                      href={child.href}
+                      key={child.href}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
+            </div>
           );
         })}
       </nav>
