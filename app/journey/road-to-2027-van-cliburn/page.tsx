@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { supabase, type VanCliburnStoryEntry } from "../../../lib/supabase";
 
 export const revalidate = 60;
@@ -55,14 +54,13 @@ export default async function RoadToVanCliburnPage() {
           <br />
           2027 VAN CLIBURN
         </h1>
-        <Image
-          src="/images/matt_px0909.jpg"
-          alt="MATT PX-0909 Journey to the Arctic poster"
-          priority
-          width={1086}
-          height={1448}
-          sizes="(max-width: 560px) 88vw, 520px"
-          className="cliburn-mission-poster"
+        <video
+          src="/videos/penguin_anime_opt.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="van-cliburn-hero-video"
         />
         <p className="cliburn-mission-statement">
           I know this is an impossible mission.
@@ -82,20 +80,20 @@ export default async function RoadToVanCliburnPage() {
           <div className="cliburn-story-copy">
             <p>This is the story behind the road.</p>
             <p>
-              From the day Matt said he wanted to try, until the online screening submission in
-              November 2026, this page records what he builds, studies, prepares, performs, fails,
+              From the day I decided I wanted to try, until the online screening submission in
+              November 2026, this page records what I builds, studies, prepares, performs, fails,
               fixes, and learns along the way.
             </p>
-            <p>Whether he qualifies or not is not the only question.</p>
+            <p>Whether I qualify or not is not the only question.</p>
             <p>
-              Because this road is already teaching him something bigger: how to prepare seriously,
+              Because this road is already teaching me something bigger: how to prepare seriously,
               how to listen deeper, how to stand under pressure, how to keep improving, and how to
               become more honest with the work.
             </p>
             <p>
               This is not only a competition page.
               <br />
-              This is a storybook of becoming.
+              This is my storybook of becoming.
             </p>
           </div>
         </div>
@@ -135,7 +133,7 @@ export default async function RoadToVanCliburnPage() {
           </div>
         ) : (
           <p className="cliburn-story-empty">
-            The story has started. Entries will be added as the road unfolds.
+            The story has started. My entries will be added as the road unfolds.
           </p>
         )}
       </section>
