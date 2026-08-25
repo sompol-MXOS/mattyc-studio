@@ -16,6 +16,60 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## MattYC Studio content archive
+
+The Creation area reads published content from four MattYC-prefixed tables in the
+shared Supabase project: `mattyc_projects`, `mattyc_series`, `mattyc_episodes`, and
+`mattyc_creative_works`. If Supabase is unavailable or the content migration has
+not been applied, the public site remains usable and shows intentional
+archive-in-progress states instead of static counts.
+
+Apply `supabase/migrations/20260824000000_add_mattyc_creation_content.sql` manually
+in the existing Supabase project. The migration extends the current integration;
+it does not alter `matt_drill_library`, `matt_weekly_drill_plan_items`,
+`matt_weekly_drill_plans`, `van_cliburn_story_entries`, or any other existing table.
+It does not deploy the application or create a new Supabase project.
+
+After applying it, enter the real content in Supabase:
+
+- the 15 Hanon A-Day episode titles, exercise numbers, topics, descriptions,
+  thumbnails, YouTube links, TikTok links, and publication dates
+- the two original/experimental work titles, descriptions, dates, artwork, and
+  real Chrome Music Lab project links (`tool_used` should be `Chrome Music Lab`)
+
+Keep rows as `draft` until they are ready. Public RLS policies expose only rows
+with `status = 'published'` whose parent project and series are also published.
+
+## MattYC content admin
+
+The internal content manager is available at `/admin/mattyc-content`. It keeps the
+existing passcode-style entry experience but validates the passcode on the server,
+stores authentication in a signed HttpOnly cookie, and performs all MattYC content
+writes in server-only route handlers.
+
+Configure these server-only values in `.env.local` and in the hosting environment:
+
+```text
+MATTYC_ADMIN_PASSCODE=choose-a-private-passcode
+MATTYC_ADMIN_SESSION_SECRET=use-a-long-random-secret
+SUPABASE_SERVICE_ROLE_KEY=the-existing-project-service-role-key
+```
+
+Never prefix the session secret or service-role key with `NEXT_PUBLIC_`. The service
+role is not imported by client components and is used only after the signed admin
+session is verified. Public RLS policies remain read-only; no additional database
+migration is required for the admin interface beyond the existing MattYC content
+migration.
+
+The admin manages metadata and external links only. YouTube, TikTok, and Chrome
+Music Lab media remain externally hosted; no video upload or video storage workflow
+is included.
+
+For the initial archive, open **Episodes**, confirm **Hanon A-Day** is selected, and
+use **Save & Add Next Episode** to work through episodes 01–15. Open **Originals &
+Experiments** to enter the two works, leaving `Chrome Music Lab` as the tool and
+placing the project link in the external-project URL field.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.

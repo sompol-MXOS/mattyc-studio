@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
+import { CurrentlyAtStudio, CurrentlyAtStudioLoading } from "./components/CurrentlyAtStudio";
 import { notes } from "./data";
+
+export const revalidate = 60;
 
 export default function Home() {
   return (
@@ -37,6 +41,10 @@ export default function Home() {
           I do not want this to be only about winning. I want to keep getting better for life.
         </p>
       </section>
+
+      <Suspense fallback={<CurrentlyAtStudioLoading />}>
+        <CurrentlyAtStudio />
+      </Suspense>
 
       <section className="notebook-list" aria-label="Matt's notes">
         {notes.map((note, index) => (

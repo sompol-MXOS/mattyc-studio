@@ -69,7 +69,8 @@ export default function VanCliburnStoryAdminPage() {
 
   useEffect(() => {
     if (window.sessionStorage.getItem("van-cliburn-story-admin") === "unlocked") {
-      setIsUnlocked(true);
+      const frameId = window.requestAnimationFrame(() => setIsUnlocked(true));
+      return () => window.cancelAnimationFrame(frameId);
     }
   }, []);
 
