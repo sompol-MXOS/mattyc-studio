@@ -80,16 +80,18 @@ export default async function SeriesPage(
         <div className="episode-grid">
           {episodes.map((episode) => (
             <article className="episode-item" key={episode.id}>
-              {episode.thumbnail_url ? (
-                <img
-                  className="episode-thumbnail"
-                  src={episode.thumbnail_url}
-                  alt={`${episode.title} thumbnail`}
-                  loading="lazy"
-                />
-              ) : (
-                <div className="episode-thumbnail episode-thumbnail-placeholder" aria-hidden="true" />
-              )}
+              <div className="episode-thumbnail-frame">
+                {episode.thumbnail_url ? (
+                  <img
+                    className="episode-thumbnail"
+                    src={episode.thumbnail_url}
+                    alt={`${episode.title} thumbnail`}
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="episode-thumbnail episode-thumbnail-placeholder" aria-hidden="true" />
+                )}
+              </div>
               <div className="episode-copy">
                 <div className="episode-labels">
                   <span>EP. {String(episode.episode_number).padStart(2, "0")}</span>
