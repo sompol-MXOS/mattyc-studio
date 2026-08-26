@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test:admin": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/mattyc-admin-validation.test.mjs"
+    "test:admin": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --experimental-strip-types --test tests/mattyc-admin-validation.test.mjs tests/mattyc-image-upload.test.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.108.2",

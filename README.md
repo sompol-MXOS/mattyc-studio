@@ -61,9 +61,36 @@ session is verified. Public RLS policies remain read-only; no additional databas
 migration is required for the admin interface beyond the existing MattYC content
 migration.
 
-The admin manages metadata and external links only. YouTube, TikTok, and Chrome
-Music Lab media remain externally hosted; no video upload or video storage workflow
-is included.
+The admin manages metadata, external links, and still-image uploads. YouTube,
+TikTok, Chrome Music Lab, and all other video/audio media remain externally hosted;
+no video upload or video storage workflow is included.
+
+### Supabase Storage setup (manual)
+
+Create the image bucket manually in the same existing Supabase project. The app
+does not create or modify Storage configuration automatically.
+
+1. In **Supabase Dashboard → Storage**, create a bucket named exactly
+   `mattyc-content`.
+2. Make the bucket **public** so the stored public URLs can be rendered on the
+   website.
+3. Set the bucket file-size limit to **5 MB**.
+4. Restrict allowed MIME types to `image/jpeg`, `image/png`, and `image/webp`.
+5. Do not add anonymous upload/update/delete policies. Uploads go through the
+   authenticated MattYC admin route and its server-only service-role client.
+
+The application stores original uploaded files without cropping or rewriting them,
+using these paths:
+
+- `episodes/<content-slug>/<unique-id>.<extension>`
+- `series/<content-slug>/<unique-id>.<extension>`
+- `originals/<content-slug>/<unique-id>.<extension>`
+
+Episode thumbnails and creative-work artwork are presented portrait-first. Use
+9:16 artwork where possible: **1080 × 1920 px** is recommended and **720 × 1280
+px** is a practical minimum. A different valid image ratio is allowed and only
+shows a non-blocking warning in the admin. The database URL columns remain
+ratio-agnostic, and the manual URL inputs remain available as a fallback.
 
 For the initial archive, open **Episodes**, confirm **Hanon A-Day** is selected, and
 use **Save & Add Next Episode** to work through episodes 01–15. Open **Originals &
