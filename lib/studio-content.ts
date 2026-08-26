@@ -1,7 +1,7 @@
 import "server-only";
 
 import { cache } from "react";
-import { supabase } from "./supabase";
+import { getSupabaseAdmin } from "./supabase-admin";
 import {
   MATTYC_CONTENT_TABLES,
   type CreativeWork,
@@ -35,6 +35,10 @@ const episodeColumns =
 const workColumns =
   "id,project_id,slug,title,subtitle,description,work_type,tool_used,artwork_url,audio_url,video_url,external_url,composition_date,published_at,featured,featured_order,status,created_at,updated_at";
 
+function getStudioContentClient() {
+  return getSupabaseAdmin();
+}
+
 function unavailable<T>(data: T): ContentResult<T> {
   return { data, state: "unconfigured", error: null };
 }
@@ -48,6 +52,7 @@ export const getStudioSnapshot = cache(async (): Promise<ContentResult<StudioSna
     originalWorkCount: null,
   };
 
+  const supabase = getStudioContentClient();
   if (!supabase) {
     return unavailable(empty);
   }
@@ -119,6 +124,7 @@ export const getStudioSnapshot = cache(async (): Promise<ContentResult<StudioSna
 
 export const getEducationalSeries = cache(
   async (): Promise<ContentResult<EducationalSeries[]>> => {
+    const supabase = getStudioContentClient();
     if (!supabase) {
       return unavailable([]);
     }
@@ -159,13 +165,30 @@ export const getSeriesWithEpisodes = cache(
   ): Promise<ContentResult<{ series: EducationalSeries | null; episodes: SeriesEpisode[] }>> => {
     const empty = { series: null, episodes: [] };
 
+    const supabase = getStudioContentClient();
     if (!supabase) {
       return unavailable(empty);
+    }
+
+    const { data: project, error: projectError } = await supabase
+      .from(MATTYC_CONTENT_TABLES.projects)
+      .select("id")
+      .eq("slug", "educational-series")
+      .eq("status", "published")
+      .maybeSingle();
+
+    if (projectError) {
+      return { data: empty, state: "error", error: projectError.message };
+    }
+
+    if (!project) {
+      return { data: empty, state: "ready", error: null };
     }
 
     const { data: series, error: seriesError } = await supabase
       .from(MATTYC_CONTENT_TABLES.series)
       .select(seriesColumns)
+      .eq("project_id", project.id)
       .eq("slug", slug)
       .eq("status", "published")
       .maybeSingle();
@@ -198,6 +221,7 @@ export const getSeriesWithEpisodes = cache(
 );
 
 export const getCreativeWorks = cache(async (): Promise<ContentResult<CreativeWork[]>> => {
+  const supabase = getStudioContentClient();
   if (!supabase) {
     return unavailable([]);
   }

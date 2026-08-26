@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getSeriesWithEpisodes } from "../../../../lib/studio-content";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 type SeriesPageProps = {
   params: Promise<{ seriesSlug: string }>;

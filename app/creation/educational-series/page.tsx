@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Ideas, exercises, and discoveries from Matt's own piano practice, explored one series at a time.",
 };
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export default async function EducationalSeriesPage() {
   const result = await getEducationalSeries();
