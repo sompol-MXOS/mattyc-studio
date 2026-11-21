@@ -7,7 +7,7 @@ export const ADMIN_SESSION_COOKIE = "mattyc-admin-session";
 export const ADMIN_SESSION_MAX_AGE = 60 * 60 * 8;
 
 function adminPasscode() {
-  return process.env.MATTYC_ADMIN_PASSCODE ?? process.env.NEXT_PUBLIC_ADMIN_PASSCODE ?? "";
+  return process.env.MATTYC_ADMIN_PASSCODE ?? "";
 }
 
 function sessionSecret() {

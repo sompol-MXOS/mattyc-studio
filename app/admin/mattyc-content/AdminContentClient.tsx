@@ -490,6 +490,7 @@ export function AdminContentClient({
             {label}
           </button>
         ))}
+        <Link href="/admin/van-cliburn-story">Van Cliburn Journey</Link>
       </nav>
 
       <main className="admin-content-shell">

@@ -10,14 +10,33 @@ async function getStoryEntries() {
   const { data, error } = await supabase
     .from("van_cliburn_story_entries")
     .select(
-      "id,title,chapter_label,entry_date,category,excerpt,body,image_url,is_published,display_order,created_at,updated_at",
+      "id,title,chapter_label,entry_date,category,excerpt,body,image_url,is_published,is_archived,display_order,created_at,updated_at",
     )
     .eq("is_published", true)
+    .eq("is_archived", false)
     .order("display_order", { ascending: true })
     .order("entry_date", { ascending: false, nullsFirst: false })
     .order("created_at", { ascending: false });
 
   if (error) {
+    if (error.code === "42703" && error.message.includes("is_archived")) {
+      const fallback = await supabase
+        .from("van_cliburn_story_entries")
+        .select(
+          "id,title,chapter_label,entry_date,category,excerpt,body,image_url,is_published,display_order,created_at,updated_at",
+        )
+        .eq("is_published", true)
+        .order("display_order", { ascending: true })
+        .order("entry_date", { ascending: false, nullsFirst: false })
+        .order("created_at", { ascending: false });
+
+      if (!fallback.error) {
+        return (fallback.data ?? []).map((entry) => ({
+          ...entry,
+          is_archived: false,
+        })) as VanCliburnStoryEntry[];
+      }
+    }
     console.error("Unable to load Van Cliburn story entries", error);
     return [];
   }
@@ -117,6 +136,13 @@ export default async function RoadToVanCliburnPage() {
                       </div>
                       <h3>{entry.title}</h3>
                       {entry.excerpt ? <p>{entry.excerpt}</p> : null}
+                      {entry.body ? (
+                        <div className="cliburn-story-body">
+                          {entry.body.split(/\n\s*\n/).map((paragraph, paragraphIndex) => (
+                            <p key={`${entry.id}-body-${paragraphIndex}`}>{paragraph}</p>
+                          ))}
+                        </div>
+                      ) : null}
                     </div>
                     {entry.image_url ? (
                       <img

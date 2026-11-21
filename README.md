@@ -61,6 +61,30 @@ session is verified. Public RLS policies remain read-only; no additional databas
 migration is required for the admin interface beyond the existing MattYC content
 migration.
 
+`NEXT_PUBLIC_ADMIN_PASSCODE` is not accepted by either admin screen. Both
+`/admin/mattyc-content` and `/admin/van-cliburn-story` use the same
+`MATTYC_ADMIN_PASSCODE` login and signed HttpOnly session cookie.
+
+## Van Cliburn Journey admin
+
+The Van Cliburn editor is linked from the main content back office. Story reads,
+writes, publication changes, archiving, and image uploads are routed through
+authenticated server handlers; browser code does not receive the service-role key
+and does not write directly to Supabase.
+
+Before enabling writes, run the read-only review query at
+`supabase/inspection/van_cliburn_security_review.sql`. Review the returned columns,
+table policies, grants, bucket settings, and Storage policies. Then review and
+manually apply `supabase/migrations/20261121000000_secure_van_cliburn_story_admin.sql`.
+The migration adds `is_archived` with a `false` default, preserves all existing
+records, IDs, and image URLs, removes public table-write privileges, limits public
+reads to published non-archived stories, and blocks browser writes to the existing
+`van-cliburn-story-images` bucket. It is never applied by the application.
+
+Until that migration is approved and applied, existing published stories continue
+to render through a backward-compatible read path. The admin lists them read-only
+and disables create, update, publication, archive, and upload controls.
+
 The admin manages metadata, external links, and still-image uploads. YouTube,
 TikTok, Chrome Music Lab, and all other video/audio media remain externally hosted;
 no video upload or video storage workflow is included.
