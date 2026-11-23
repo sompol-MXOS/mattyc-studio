@@ -1,8 +1,11 @@
-import { supabase, type VanCliburnStoryEntry } from "../../../lib/supabase";
+import { getSupabaseAdmin } from "../../../lib/supabase-admin";
+import type { VanCliburnStoryEntry } from "../../../lib/supabase";
 
 export const revalidate = 60;
 
 async function getStoryEntries() {
+  const supabase = getSupabaseAdmin();
+
   if (!supabase) {
     return [];
   }
