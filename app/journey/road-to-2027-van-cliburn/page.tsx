@@ -75,10 +75,12 @@ export default async function RoadToVanCliburnPage() {
         </h1>
         <video
           src="/videos/penguin_anime_opt.mp4"
+          poster="/images/matt_px0909.jpg"
           autoPlay
           loop
           muted
           playsInline
+          preload="metadata"
           className="van-cliburn-hero-video"
         />
         <p className="cliburn-mission-statement">
