@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getStudioSnapshot } from "../../lib/studio-content";
 
@@ -18,11 +19,17 @@ export function CurrentlyAtStudioLoading() {
     <section className="studio-now page-shell" aria-busy="true">
       <div className="studio-now-heading">
         <p className="eyebrow">Currently at the studio</p>
-        <h2>What Matt is working on now.</h2>
+        <h2>What I am working on now.</h2>
       </div>
       <div className="studio-now-grid">
-        <div className="studio-card studio-card-skeleton" />
-        <div className="studio-card studio-card-skeleton" />
+        <div className="studio-card studio-card-skeleton" aria-hidden="true">
+          <div className="studio-card-image" />
+          <div className="studio-card-copy" />
+        </div>
+        <div className="studio-card studio-card-skeleton" aria-hidden="true">
+          <div className="studio-card-image" />
+          <div className="studio-card-copy" />
+        </div>
       </div>
     </section>
   );
@@ -36,13 +43,21 @@ export async function CurrentlyAtStudio() {
     <section className="studio-now page-shell" aria-labelledby="studio-now-title">
       <div className="studio-now-heading">
         <p className="eyebrow">Currently at the studio</p>
-        <h2 id="studio-now-title">What Matt is working on now.</h2>
+        <h2 id="studio-now-title">What I am working on now.</h2>
         <p>A small live view of the ideas being practised, tested, and made.</p>
       </div>
 
       <div className="studio-now-grid">
         <article className="studio-card">
-          <div className="studio-card-marker" aria-hidden="true">01</div>
+          <div className="studio-card-image studio-card-image-practice">
+            <Image
+              src="/images/studio/practice-room.jpg"
+              alt="Matt practising on a Steinway grand piano"
+              fill
+              sizes="(max-width: 900px) calc(100vw - 40px), 50vw"
+            />
+            <span className="studio-card-number" aria-hidden="true">01</span>
+          </div>
           <div className="studio-card-copy">
             <p className="eyebrow">Educational Series by MattYC</p>
             <h3>Ideas from my practice room.</h3>
@@ -61,7 +76,15 @@ export async function CurrentlyAtStudio() {
         </article>
 
         <article className="studio-card">
-          <div className="studio-card-marker studio-card-marker-signal" aria-hidden="true">02</div>
+          <div className="studio-card-image studio-card-image-creation">
+            <Image
+              src="/images/studio/music-creation.jpg"
+              alt="Matt exploring music creation in the studio"
+              fill
+              sizes="(max-width: 900px) calc(100vw - 40px), 50vw"
+            />
+            <span className="studio-card-number" aria-hidden="true">02</span>
+          </div>
           <div className="studio-card-copy">
             <p className="eyebrow">Originals &amp; Experiments</p>
             <h3>From playing music to making music.</h3>

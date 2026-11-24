@@ -1446,40 +1446,47 @@ main {
 .studio-card {
   display: grid;
   min-height: 480px;
-  grid-template-rows: 164px 1fr;
+  grid-template-rows: auto 1fr;
   border: 1px solid var(--line);
   background: var(--paper);
 }
 
-.studio-card-marker {
+.studio-card-image {
   position: relative;
-  display: flex;
-  align-items: flex-end;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
-  padding: 24px;
-  background:
-    linear-gradient(105deg, #171411 0 54%, transparent 54%),
-    linear-gradient(90deg, rgba(169, 120, 44, 0.72), rgba(169, 120, 44, 0.16));
-  color: rgba(255, 250, 242, 0.82);
+  background: rgba(23, 20, 17, 0.08);
+}
+
+.studio-card-image img {
+  object-fit: cover;
+  transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.studio-card-image-practice img {
+  object-position: 50% 68%;
+}
+
+.studio-card-image-creation img {
+  object-position: 50% 62%;
+}
+
+.studio-card-number {
+  position: absolute;
+  bottom: 18px;
+  left: 20px;
+  z-index: 1;
+  color: rgba(255, 250, 242, 0.86);
   font-family: Consolas, "Courier New", monospace;
   font-size: 12px;
+  line-height: 1;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.48);
 }
 
-.studio-card-marker::after {
-  position: absolute;
-  top: -44px;
-  right: 9%;
-  width: 180px;
-  height: 180px;
-  border: 1px solid rgba(255, 250, 242, 0.62);
-  border-radius: 50%;
-  content: "";
-}
-
-.studio-card-marker-signal {
-  background:
-    repeating-linear-gradient(90deg, transparent 0 12%, rgba(255, 250, 242, 0.45) 12% 12.3%, transparent 12.3% 24%),
-    linear-gradient(118deg, #5d4630, #171411 62%);
+@media (hover: hover) and (pointer: fine) {
+  .studio-card:hover .studio-card-image img {
+    transform: scale(1.035);
+  }
 }
 
 .studio-card-copy {
@@ -1531,14 +1538,23 @@ main {
 .studio-card-skeleton {
   min-height: 480px;
   border-color: transparent;
-  background:
-    linear-gradient(100deg, rgba(23, 20, 17, 0.04) 20%, rgba(255, 255, 255, 0.48) 36%, rgba(23, 20, 17, 0.04) 52%) 0 0 / 240% 100%,
-    var(--paper);
-  animation: studio-loading 1.4s ease infinite;
+  background: var(--paper);
+}
+
+.studio-card-skeleton .studio-card-image,
+.studio-card-skeleton .studio-card-copy {
+  background: rgba(23, 20, 17, 0.06);
+  animation: studio-loading 1.4s ease-in-out infinite alternate;
+}
+
+.studio-card-skeleton .studio-card-copy {
+  margin: clamp(26px, 3.6vw, 42px);
+  min-height: 300px;
+  padding: 0;
 }
 
 @keyframes studio-loading {
-  to { background-position: -240% 0; }
+  to { opacity: 0.45; }
 }
 
 .creation-hub {
@@ -2005,7 +2021,12 @@ main {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .studio-card-skeleton {
+  .studio-card-image img {
+    transition: none;
+  }
+
+  .studio-card-skeleton .studio-card-image,
+  .studio-card-skeleton .studio-card-copy {
     animation: none;
   }
 }
