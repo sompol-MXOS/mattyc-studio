@@ -22,16 +22,17 @@ export const notes = [
 ];
 
 export const repertoire = [
-  "Chopin Etude Op.25 No.11, Winter Wind",
-  "Liszt Mazeppa",
-  "Liszt Hungarian Rhapsody No.2",
-  "Beethoven Pathetique Sonata, 3rd movement",
-  "Rachmaninoff Prelude Op.23 No.6",
-  "Ravel Ondine",
-  "Chopin Heroic Polonaise",
-  "Brahms Op.118 No.2",
-  "Alkan Saltarelle",
-  "Scarlatti K.141",
+  "Chopin – Étude Op. 25 No. 11, “Winter Wind”",
+  "Liszt – Mazeppa",
+  "Liszt – Hungarian Rhapsody No. 2",
+  "Beethoven – Grand Sonata “Pathétique”",
+  "Rachmaninoff – Prelude Op. 23 No. 6",
+  "Chopin – Polonaise Op. 53, “Heroic”",
+  "Brahms – Intermezzo Op. 118 No. 2",
+  "Liszt – Spanish Fantasy",
+  "Mozart – Piano Sonata in A Minor, K. 310",
+  "Bach – Prelude and Fugue in E Major, BWV 878",
+  "Bartók – Piano Concerto No. 2",
 ];
 
 export const journeyLines = [

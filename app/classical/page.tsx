@@ -27,6 +27,14 @@ export default function ClassicalPage() {
         <p className="large-note">
           I want to keep piano at the highest level I can for life, even while I build into other worlds.
         </p>
+        <div className="classical-repertoire-intro">
+          <h2 className="eyebrow">My Classical Repertoire</h2>
+          <p>
+            A selection of works I have performed, studied, and am currently developing. Each piece
+            represents a different challenge in my musical journey, pushing me to explore new
+            techniques, sounds, and ways of expressing music.
+          </p>
+        </div>
         <div className="repertoire-list" aria-label="Repertoire notes">
           {repertoire.map((piece, index) => (
             <div className="repertoire-line" key={piece}>
